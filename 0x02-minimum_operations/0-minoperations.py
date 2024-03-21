@@ -21,7 +21,8 @@ def minOperations(n):
             # If clipboard is a divisor of n, paste clipboard 'n // clipboard' times
             operations += divisor
             n //= divisor
-            divisor += 1
+            else:
+                divisor += 1
             
             return operations
 
