@@ -1,18 +1,19 @@
 #!/usr/bin/python3
 
 """
-This module implements a method to calculate the fewest number of operations needed to result in exactly n H characters in a text file.
+Thr of operations needed to result in exactly n H characte
 """
+
 
 def minOperations(n):
     """
-    Calculate the fewest number of operations needed to result in exactly n H characters.
+    Calculate the fewest number of ult in exactly n H characters.
 
     Args:
         n (int): The desired number of H characters in the file.
 
     Returns:
-        int: The minimum number of operations required. If n is impossible to achieve, returns 0.
+        int: The minimum nmpossible to achieve, returns 0.
     """
     if n <= 1:
         return n
@@ -27,6 +28,7 @@ def minOperations(n):
         divisor += 1
 
     return operations
+
 
 # Example usage:
 if __name__ == "__main__":
