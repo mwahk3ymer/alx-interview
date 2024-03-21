@@ -13,22 +13,18 @@ def minOperations(n):
     if n <= 1:
         return 0
 
-    # Initialize count and clipboard size
-    count = 0
-    clipboard = 1
+    operations = 0
+    divisor = 2
 
-    while clipboard < n:
-        if n % clipboard == 0:
+    while n > 1:
+        while n % divisor == 0:
             # If clipboard is a divisor of n, paste clipboard 'n // clipboard' times
-            count += (n // clipboard) - 1
-            return count
-        else:
-            # If clipboard is not a divisor of n, increase clipboard
-            clipboard += clipboard
-            count += 1
-
-    return count
+            operations += divisor
+            n //= divisor
+            divisor += 1
+            
+            return operations
 
 if __name__ == "__main__":
-    n = 9
-    print("Number of operations:", minOperations(n))
+    n = 4
+    print("Min number of operations to reach {} characters: {}".format(n, minOperations(n)))
