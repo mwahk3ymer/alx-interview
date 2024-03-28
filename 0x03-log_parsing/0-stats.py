@@ -3,6 +3,7 @@
 
 import sys
 
+
 def compute_metrics():
     # Initialize variables
     cache = {'200': 0, '301': 0, '400': 0, '401': 0,
@@ -43,6 +44,7 @@ def compute_metrics():
     except Exception as e:
         # Handle other exceptions
         print('An error occurred:', e)
+
 
 if __name__ == "__main__":
     compute_metrics()
