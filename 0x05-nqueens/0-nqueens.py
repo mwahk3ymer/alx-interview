@@ -2,66 +2,52 @@
 
 import sys
 
-
 def is_safe(board, row, col, n):
+    # Check if there is a queen in the same column up to the current row
     for i in range(row):
-        if board[i][col] == 1:
+        if board[i] == col or board[i] - i == col - row or board[i] + i == col + row:
             return False
-
-    # Check upper left diagonal
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
-
-    # Check upper right diagonal
-    for i, j in zip(range(row, -1, -1), range(col, n)):
-        if board[i][j] == 1:
-            return False
-
     return True
-
 
 def solve_n_queens_util(board, row, n):
     if row == n:
-        print_solution(board, n)
+        print_solution(board)
         return True
 
     for col in range(n):
         if is_safe(board, row, col, n):
-            board[row][col] = 1
+            board[row] = col
             solve_n_queens_util(board, row + 1, n)
-            board[row][col] = 0
-
+            board[row] = -1
 
 def solve_n_queens(n):
     if not isinstance(n, int):
-        print("N must be a number")
+        print("N must be a number", file=sys.stderr)
         sys.exit(1)
 
     if n < 4:
-        print("N must be at least 4")
+        print("N must be at least 4", file=sys.stderr)
         sys.exit(1)
 
-    board = [[0 for _ in range(n)] for _ in range(n)]
+    board = [-1] * n
     solve_n_queens_util(board, 0, n)
 
-
-def print_solution(board, n):
-    for i in range(n):
-        for j in range(n):
-            print(board[i][j], end=" ")
-        print()
-    print()
-
+def print_solution(board):
+    print("[", end="")
+    for i, col in enumerate(board):
+        if i != 0:
+            print(", ", end="")
+            print("[{}, {}]".format(i, col), end="")
+            print("]")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: nqueens N")
+        print("Usage: nqueens N", file=sys.stderr)
         sys.exit(1)
 
     try:
         n = int(sys.argv[1])
         solve_n_queens(n)
     except ValueError:
-        print("N must be a number")
+        print("N must be a number", file=sys.stderr)
         sys.exit(1)
