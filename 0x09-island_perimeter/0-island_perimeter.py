@@ -3,6 +3,16 @@
 
 
 def island_perimeter(grid):
+   """
+    Calculate the perimeter of the island described in the grid.
+
+    Args:
+    Returns:
+        int: The perimeter of the island.
+
+    Raises:
+        None
+    """
     perimeter = 0
 
     # Iterate over each cell in the grid
