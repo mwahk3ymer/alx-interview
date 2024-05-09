@@ -1,1 +1,1 @@
-pascal triangle
+new interview querry
